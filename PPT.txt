@@ -1,0 +1,11 @@
+Functionalities
+1. Registration
+2. Login
+3. Displaying Categories from dropdown
+4. Filter Products by category
+5. Adding home into cart
+6. More shopping for More Products
+7. Place order(for checkout)
+8.Continue(Order Finalization)
+9. Logout(Relogin)
+HTML-MVC

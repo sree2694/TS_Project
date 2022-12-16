@@ -1,0 +1,9 @@
+drop database furniture;
+create database furniture;
+use furniture;
+create table user(id int primary key auto_increment, name varchar(30) not null, email varchar(40) not null,password varchar(20) not null)auto_increment=100;
+create table product(id int primary key auto_increment,name varchar(30),price int,image_url varchar(30),category varchar(30))auto_increment = 100;
+create table orders(id int primary key auto_increment,user_id int,total_amount int,order_date date,foreign key(user_id) references user(id))auto_increment = 100;
+create table order_details(id int primary key auto_increment, order_id int, product_id int, quantity int, foreign key(order_id) references orders(id), foreign key(product_id) references product(id)) auto_increment=100;
+
+insert into product(name,price,image_url,category) values('Chesterfield',3000,'s1.jpg','Sofa'),('Mid-Century Modern',2700,'s2.jpg','Sofa'),('Contemporary',5000,'s3.jpg','Sofa'),('Bridgewater Sofa',9000,'s4.jpg','Sofa'),('Bridgewater Sofa',9000,'s5.jpg','Sofa'),('Single',7000,'b1.jpg','Bed'),('Twin',9000,'b2.jpg','Bed'),('Double',12000,'b3.jpg','Bed'),('King',15000,'b4.jpg','Bed'),('Queen',18000,'b5.jpg','Bed'),('Rectangular',15000,'t1.jpg','Dining Table'),('Square',12000,'t2.jpg','Dining Table'),('Foldable',18000,'t3.jpg','Dining Table'),('Freeform',18000,'t4.jpg','Dining Table'),('Oval',16000,'t5.jpg','Dining Table'),('Study Chair',9000,'o1.jpg','Office Furniture'),('Desk',12000,'o2.jpg','Office Furniture'),('Executive Chair',9000,'o3.jpg','Office Furniture'),('WorkStation desk',12000,'o4.JPG','Office Furniture'),('Conference Table',11000,'o5.JPG','Office Furniture'),('Books Storage',5000,'st1.jpg','Storage'),('TV Unitwall',10000,'st2.jpg','Storage'),('Cupboards',16000,'st3.jpg','Storage'),('Chest of Drwers',13000,'st4.jpg','Storage'),('Tall Crockery Unit',34000,'st5.jpg','Storage');

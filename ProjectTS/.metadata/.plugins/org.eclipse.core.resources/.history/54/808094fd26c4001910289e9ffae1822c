@@ -1,0 +1,86 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</head>
+<body style="background-color: #d5f4e6">
+	<nav class="navbar" style="background-color: #80ced6;">
+		<div class="container">
+			<img src="images/h1.png" alt="No-image" class="img-thumbnail"
+				width="80px" height="80px">
+			<ul class="nav">
+				<li class="nav-item"><button type="button"
+						class="btn btn-primary">Welcome ${user}</button>&nbsp;&nbsp;&nbsp;
+				<li class="nav-item"><a class="btn btn-primary"
+					href="logout.jsp">Logout</a>&nbsp;&nbsp;&nbsp;
+			</ul>
+		</div>
+	</nav>
+	<br>
+
+	<!-- Dropdown Element -->
+	<div class="container">
+		<form action="show" method="post">
+			<div class="row">
+
+				<div class="col-sm-3">
+					Select Category : <select name="category"
+						class="form-control col-sm-9" style="width: 200px;">
+						<option value="-1">SelectCategory</option>
+						<c:forEach items="${categoryList}" var="cl">
+							<option value="${cl}">${cl}</option>
+						</c:forEach>
+					</select>
+				</div>
+				<div class="col-sm-1">
+					<br> <input type="submit" class="btn btn-primary"
+						name="action" value="GO" style="float: center;" />
+				</div>
+			</div>
+		</form>
+	</div>
+	<br>	<br>	<br>	<br>
+	
+	<form action="show" method="post">
+		<div class="container">
+			<table class="table table-condensed" border="2">
+				<tr>
+					<th>Image</th>
+					<th>ProductName</th>
+					<th>Price</th>
+					<th>Quantity</th>
+				</tr>
+				<c:forEach items="${productList}" var="il">
+					<tr>
+						<td><img src="images/${il.imageUrl}" width="90px"
+							height="90px"></td>
+						<td>${il.name}</td>
+						<td>${il.price}</td>
+						<td><input type="number" name="qty" value="0" min="0"
+							max="50" /></td>
+						<input type="hidden" name="iId" value="${il.id}" />
+					</tr>
+				</c:forEach>
+			</table>
+
+			<input type="submit" name="action" value="AddToCart"
+				class="btn btn-primary" style="float: right;" />
+		</div>
+	</form>
+
+</body>
+</html>
